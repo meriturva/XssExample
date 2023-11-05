@@ -1,10 +1,10 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
+const handlebars = require('express-handlebars');
 
 const app = express();
 const port = 4000
 
-app.engine('handlebars', exphbs());
+app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
@@ -25,7 +25,7 @@ app.listen(port, () => {
 //<script>document.onkeypress = function(e) { console.log(e)}</script>
 // http://localhost:4000/?name=diego+%3Cscript%3Edocument.onkeypress%20%3D%20function%28e%29%20%7B%20console.log%28e%29%7D%3C%2Fscript%3E
 
-//<script>document.onkeypress = function(e) { console.log(e)}</script>
+// <script>document.onkeypress = function(e) { console.log(e)}</script>
 // http://localhost:4000/?name=diego+%3Cscript%3Edocument.onkeypress%20%3D%20function%28e%29%20%7B%20console.log%28e%29%7D%3C%2Fscript%3E
 
 // <script>eval(atob("ZG9jdW1lbnQub25rZXlwcmVzcyA9IGZ1bmN0aW9uKGUpIHsgY29uc29sZS5sb2coZSl9"))</script>

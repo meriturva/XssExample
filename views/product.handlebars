@@ -1,30 +1,29 @@
-
-    <script>
-        function SendReview() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert("Recensione accettata");
-                }
-            };
-            xhttp.open("POST", "http://localhost:4000/reviews", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            var review = {
-                content: document.getElementById('userTextArea').value
+<script>
+    function SendReview() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Recensione accettata");
             }
-            xhttp.send(JSON.stringify(review));
+        };
+        xhttp.open("POST", "http://localhost:4000/reviews", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        var review = {
+            content: document.getElementById('userTextArea').value
         }
-    </script>
+        xhttp.send(JSON.stringify(review));
+    }
+</script>
 
-    Qui c'e' la descrizone del prodotto
-    <hr>
-    Elenco delle recensioni per il prodotto x da parte degli utenti:
-    <hr>
-    {{#each reviews}}
-        <div style="border:1px solid red; margin: 10px">
-            {{{this.content}}}
-        </div>
-    {{/each}}
+Qui c'e' la descrizone del prodotto
+<hr>
+Elenco delle recensioni per il prodotto x da parte degli utenti:
+<hr>
+{{#each reviews}}
+<div style="border:1px solid red; margin: 10px">
+    {{{this.content}}}
+</div>
+{{/each}}
 
-    <textarea id="userTextArea" col="10" row="10" style="margin-top:100px"></textarea><br>
-    <button onclick="SendReview()">Conferma la tua recensione</button>
+<textarea id="userTextArea" col="10" row="10" style="margin-top:100px"></textarea><br>
+<button onclick="SendReview()">Conferma la tua recensione</button>
